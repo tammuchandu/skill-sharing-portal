@@ -27,20 +27,25 @@ public class Skills {
     @NotBlank
     private String category;
 
+    @Column(name = "video_url")
     private String videoUrl;
 
-    // PostgreSQL-compatible binary data
-    @Lob
-    @Column(columnDefinition = "BYTEA")
+    // ===============================
+    // PostgreSQL BYTEA images
+    // ===============================
+
+    @Column(name = "image1", columnDefinition = "BYTEA")
     private byte[] image1;
 
-    @Lob
-    @Column(columnDefinition = "BYTEA")
+    @Column(name = "image2", columnDefinition = "BYTEA")
     private byte[] image2;
 
-    @Lob
-    @Column(columnDefinition = "BYTEA")
+    @Column(name = "image3", columnDefinition = "BYTEA")
     private byte[] image3;
+
+    // ===============================
+    // USER
+    // ===============================
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
