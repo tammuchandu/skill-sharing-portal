@@ -1,16 +1,20 @@
 version: "3.9"
 
 services:
+
   mysql:
     image: mysql:8.0
     container_name: bootmvc_mysql
     ports:
-      - "3307:3306"  # Host:Container for local access
+      - "3307:3306"
+
     environment:
       MYSQL_ROOT_PASSWORD: Tchandu@543
       MYSQL_DATABASE: mydb
+
     volumes:
       - mysql-data:/var/lib/mysql
+
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 10s
@@ -19,15 +23,25 @@ services:
 
   spring_app:
     build: .
-    image: rama  # Fixed image name
-    container_name: ${APP_CONTAINER_NAME:-bootmvc_app}  # Dynamic container name
+    image: rama
+    container_name: ${APP_CONTAINER_NAME:-bootmvc_app}
+
     ports:
-      - "8081:8080"  # Local access
+      - "8081:8080"
+
     environment:
+
+      # LOCAL DOCKER MYSQL
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/mydb
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: Tchandu@543
-      PORT: 8080  # For Render, optional if Render sets PORT automatically
+
+      PORT: 8080
+
+      # Google OAuth2
+      GOOGLE_CLIENT_ID: ${YOUR_GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${YOUR_GOOGLE_CLIENT_SECRET}
+
     depends_on:
       mysql:
         condition: service_healthy
