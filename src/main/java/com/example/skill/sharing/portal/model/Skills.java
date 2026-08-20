@@ -29,19 +29,20 @@ public class Skills {
 
     private String videoUrl;
 
+    // PostgreSQL-compatible binary data
     @Lob
-    @Column(columnDefinition = "LONGBLOB")
+    @Column(columnDefinition = "BYTEA")
     private byte[] image1;
 
     @Lob
-    @Column(columnDefinition = "LONGBLOB")
+    @Column(columnDefinition = "BYTEA")
     private byte[] image2;
 
     @Lob
-    @Column(columnDefinition = "LONGBLOB")
+    @Column(columnDefinition = "BYTEA")
     private byte[] image3;
 
     @ManyToOne(fetch = FetchType.EAGER)
-@JoinColumn(name = "user_id")
-private SkillsPeople user;
+    @JoinColumn(name = "user_id")
+    private SkillsPeople user;
 }
