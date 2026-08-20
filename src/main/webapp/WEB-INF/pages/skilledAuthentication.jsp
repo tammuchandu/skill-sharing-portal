@@ -8,7 +8,6 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
 
 <style>
-
 body{
     background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
     min-height: 100vh;
@@ -18,13 +17,11 @@ body{
     font-family: "Segoe UI", sans-serif;
 }
 
-/* main container */
 .auth-wrapper{
     width: 100%;
     max-width: 900px;
 }
 
-/* header */
 .title{
     font-size: 36px;
     font-weight: 800;
@@ -32,7 +29,6 @@ body{
     margin-bottom: 40px;
 }
 
-/* cards */
 .card{
     border: none;
     border-radius: 18px;
@@ -47,35 +43,20 @@ body{
     box-shadow: 0 12px 35px rgba(0,0,0,0.12);
 }
 
-/* headings */
 .card h4{
     font-weight: 700;
     margin-bottom: 10px;
 }
 
-/* text */
 .card p{
     color: #6c757d;
     margin-bottom: 20px;
 }
 
-/* buttons */
 .btn{
     border-radius: 10px;
     padding: 10px;
     font-weight: 600;
-}
-
-.btn-primary{
-    background: #0d6efd;
-}
-
-.btn-success{
-    background: #198754;
-}
-
-.btn-danger{
-    background: #dc3545;
 }
 
 .divider{
@@ -97,9 +78,7 @@ body{
 
 .divider::before{ left: 0; }
 .divider::after{ right: 0; }
-
 </style>
-
 </head>
 
 <body>
@@ -113,9 +92,8 @@ body{
 
     <div class="row g-4 justify-content-center">
 
-        <!-- LOGIN CARD -->
+        <!-- LOGIN -->
         <div class="col-md-5">
-
             <div class="card">
 
                 <h4>
@@ -125,17 +103,17 @@ body{
 
                 <p>Already have an account?</p>
 
-                <a href="/skilledloginFrom" class="btn btn-primary w-100">
+                <a href="/skilledloginFrom"
+                   class="btn btn-primary w-100">
+
                     Login
+
                 </a>
-
             </div>
-
         </div>
 
-        <!-- REGISTER CARD -->
+        <!-- REGISTER -->
         <div class="col-md-5">
-
             <div class="card">
 
                 <h4>
@@ -145,20 +123,25 @@ body{
 
                 <p>Create a new account</p>
 
-                <a href="/skilledRegisterForm" class="btn btn-success w-100">
+                <a href="/skilledRegisterForm"
+                   class="btn btn-success w-100">
+
                     Register
+
                 </a>
 
                 <div class="divider">OR</div>
 
+                <!-- FIXED -->
                 <a href="/login/google/skilled"
                    class="btn btn-danger w-100">
+
                     <i class="bi bi-google"></i>
                     Login With Google
+
                 </a>
 
             </div>
-
         </div>
 
     </div>

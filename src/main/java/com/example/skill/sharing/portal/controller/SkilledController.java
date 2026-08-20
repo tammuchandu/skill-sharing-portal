@@ -21,7 +21,7 @@ public class SkilledController {
 
 
     // ================= HOME =================
-    @GetMapping("/home")
+     @GetMapping({"/", "/home"})
     public String home() {
         return "home";
     }

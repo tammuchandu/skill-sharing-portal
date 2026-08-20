@@ -22,7 +22,6 @@ public class OAuthController {
             Authentication authentication,
             HttpSession session) {
 
-        // CHECK LOGIN
         if (authentication == null ||
                 !(authentication.getPrincipal()
                         instanceof OAuth2User)) {
@@ -30,58 +29,56 @@ public class OAuthController {
             return "redirect:/home";
         }
 
-        // GET GOOGLE USER
         OAuth2User oauthUser =
                 (OAuth2User) authentication.getPrincipal();
 
-        // PROCESS USER
         SkillsPeople dbUser =
                 userService.processOAuthUser(oauthUser);
 
-        // STORE FULL USER OBJECT
         session.setAttribute(
                 "currentUser",
                 dbUser);
 
-        // STORE FULL NAME
         session.setAttribute(
                 "fullName",
                 dbUser.getFullName());
 
-        // STORE EMAIL
         session.setAttribute(
                 "email",
                 dbUser.getEmail());
 
-        // CHECK LOGIN TYPE
-        if ("GOOGLE".equals(dbUser.getProvider())) {
+        if ("GOOGLE".equals(
+                dbUser.getProvider())) {
 
-            // GOOGLE LOGIN
             session.setAttribute(
                     "userId",
                     dbUser.getProviderId());
 
         } else {
 
-            // NORMAL LOGIN
             session.setAttribute(
                     "userId",
                     dbUser.getUsername());
         }
 
-        // LOGIN TYPE
         String loginType =
-                (String) session.getAttribute("loginType");
+                (String) session.getAttribute(
+                        "loginType");
 
-        session.removeAttribute("loginType");
+        System.out.println(
+                "LOGIN TYPE = " + loginType);
 
-        // REDIRECT
-        if ("skilled".equals(loginType)) {
+        session.removeAttribute(
+                "loginType");
+
+        if ("skilled".equals(
+                loginType)) {
 
             return "redirect:/addSkill";
         }
 
-        if ("seeker".equals(loginType)) {
+        if ("seeker".equals(
+                loginType)) {
 
             return "redirect:/skillspage";
         }

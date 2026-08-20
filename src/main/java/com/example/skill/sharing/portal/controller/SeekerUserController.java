@@ -27,10 +27,10 @@ public class SeekerUserController {
    // @Autowired
    // private SkillsServiceINF skillsService;
 
-    @GetMapping("/")
+   /*  @GetMapping("/")
     public String home() {
         return "home";
-    }
+    }*/
 
     @GetMapping("/skillSeekerAuthentication")
     public String authPage() {
